@@ -16,4 +16,4 @@ build:
         password: $PASSWORD
         repository: amarburg/lsdslam-dev-host
         registry: https://registry.hub.docker.com
-        tags: conan-latest
+        tag: conan-latest
