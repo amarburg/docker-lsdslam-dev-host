@@ -14,7 +14,7 @@ build:
           cd libabigail
           autoreconf -i
           mkdir build && cd build
-          ../configure --prefix=/usr/local
+          ../configure --prefix=/usr
           make && make install
 
     # Push completed builds to Docker hub
