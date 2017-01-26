@@ -1,15 +1,26 @@
 # wercker version for box creation
-box: ubuntu:16.04
+box: amarburg/lsdslam-dev-host
 
 build:
   steps:
     - install-packages:
-         packages: cmake rake libopencv-dev libboost-all-dev libeigen3-dev libtclap-dev libgomp1 libsuitesparse-dev git libglew-dev libglm-dev autoconf libtool freeglut3-dev libxmu-dev libxi-dev
+         packages: elfutils libelf-dev libdw-dev libxml2-dev
 
+    - script:
+        name: Build abigail
+        code: |
+          cd /usr/local/src
+          git clone git://sourceware.org/git/libabigail.git
+          cd libabigail
+          autoreconf -i
+          mkdir build && cd build
+          ../configure --prefix=/usr/local
+          make && make install
 
     # Push completed builds to Docker hub
     - internal/docker-push:
         username: $USERNAME
         password: $PASSWORD
         repository: amarburg/lsdslam-dev-host
+        tag: with_abigail
         registry: https://registry.hub.docker.com
