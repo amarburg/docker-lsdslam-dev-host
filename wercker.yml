@@ -22,5 +22,5 @@ build:
         username: $USERNAME
         password: $PASSWORD
         repository: amarburg/lsdslam-dev-host
-        tag: with_abigail
+        tag: with-abigail
         registry: https://registry.hub.docker.com
