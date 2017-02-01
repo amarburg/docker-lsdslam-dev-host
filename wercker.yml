@@ -8,7 +8,8 @@ build:
     
     - script:
       name:  install conan
-      code:  pip install conan
+      code: |
+	 pip install --upgrade conan
 
     # Push completed builds to Docker hub
     - internal/docker-push:
