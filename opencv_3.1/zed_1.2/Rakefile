@@ -1,0 +1,21 @@
+
+
+IMAGE_NAME =  "amarburg/lsdslam-dev-host"
+IMAGE_TAG  =  "nvidia_cuda_opencv3.1_zed1.2"
+
+task :default => "docker:build"
+
+namespace :docker do
+
+  tag = "%s:%s" % [IMAGE_NAME, IMAGE_TAG]
+
+  task :build do
+    sh "docker build -t #{tag} . "
+  end
+
+  task :push do
+      sh "docker login"
+      sh "docker push #{tag}"
+  end
+
+end
