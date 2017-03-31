@@ -5,8 +5,11 @@ IMAGE_TAG  =  "nvidia_cuda_nocv"
 
 task :default => "docker:build"
 
+## No dependency tracking right now, just builds them in order
 paths = { ".": "nvidia_cuda_nocv",
-          "system_opencv": "nvidia_cuda" }
+          "system_opencv": "nvidia_cuda",
+          "opencv_3.1": "nvidia_cuda_opencv3.1",
+          "opencv_3.1/zed_1.2": "nvidia_cuda_opencv3.1_zed1.2" }
 
 namespace :docker do
 

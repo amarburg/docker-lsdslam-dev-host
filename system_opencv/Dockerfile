@@ -3,4 +3,4 @@
 ## cloud
 FROM amarburg/lsdslam-dev-host:nvidia_cuda_nocv
 
-RUN apt-get install --no-install-recommends --yes libopencv-dev
+RUN sudo apt-get install --no-install-recommends --yes libopencv-dev
