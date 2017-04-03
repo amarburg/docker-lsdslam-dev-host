@@ -1,0 +1,30 @@
+diff --git a/modules/stitching/src/stitcher.cpp b/modules/stitching/src/stitcher.cpp
+index 41fe81f..2be3bc5 100644
+--- a/modules/stitching/src/stitcher.cpp
++++ b/modules/stitching/src/stitcher.cpp
+@@ -65,7 +65,12 @@ Stitcher Stitcher::createDefault(bool try_use_gpu)
+         stitcher.setFeaturesFinder(makePtr<detail::OrbFeaturesFinder>());
+ #endif
+         stitcher.setWarper(makePtr<SphericalWarperGpu>());
++
++#ifdef HAVE_OPENCV_CUDALEGACY
+         stitcher.setSeamFinder(makePtr<detail::GraphCutSeamFinderGpu>());
++#else
++        stitcher.setSeamFinder(makePtr<detail::GraphCutSeamFinder>(detail::GraphCutSeamFinderBase::COST_COLOR));
++#endif
+     }
+     else
+ #endif
+@@ -558,7 +563,12 @@ Ptr<Stitcher> createStitcher(bool try_use_gpu)
+         stitcher->setFeaturesFinder(makePtr<detail::OrbFeaturesFinder>());
+         #endif
+         stitcher->setWarper(makePtr<SphericalWarperGpu>());
++
++#ifdef HAVE_OPENCV_CUDALEGACY
+         stitcher->setSeamFinder(makePtr<detail::GraphCutSeamFinderGpu>());
++#else
++        stitcher->setSeamFinder(makePtr<detail::GraphCutSeamFinder>(detail::GraphCutSeamFinderBase::COST_COLOR));
++#endif
+     }
+     else
+         #endif

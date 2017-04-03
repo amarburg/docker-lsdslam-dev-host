@@ -3,26 +3,15 @@
 ## cloud
 FROM amarburg/lsdslam-dev-host:nvidia_cuda_nocv
 
-#ENV OPENCV_BRANCH=3.1.0
-#ENV OPENCV_GIT=https://github.com/opencv/opencv.git
-
-## Use this patched fork
-ENV OPENCV_BRANCH=3.1.0-with-cuda8
-ENV OPENCV_GIT=https://github.com/daveselinger/opencv.git
+ENV OPENCV_BRANCH=3.2.0
 
 RUN sudo apt-get install --yes libpng12-dev
 
 WORKDIR /home/lsdslam
 USER lsdslam
-RUN git clone --single-branch --branch $OPENCV_BRANCH --depth 1 $OPENCV_GIT
+RUN git clone --single-branch --branch $OPENCV_BRANCH --depth 1 https://github.com/opencv/opencv.git
 RUN mkdir /home/lsdslam/opencv/build-$OPENCV_BRANCH
-
-WORKDIR /home/lsdslam/opencv
-COPY seam_finder_patch.patch .
-RUN git apply --verbose seam_finder_patch.patch
-
 WORKDIR /home/lsdslam/opencv/build-$OPENCV_BRANCH
-
 RUN cmake -DCMAKE_BUILD_TYPE:string=Release \
           -DBUILD_PERF_TESTS:bool=OFF \
           -DBUILD_TESTS:bool=OFF \

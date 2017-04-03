@@ -1,7 +1,7 @@
 ## The coverity binary needs to be downloaded from an authenticated
 ## account, so this Docker image can't be built automatically in the
 ## cloud
-FROM amarburg/lsdslam-dev-host:nvidia_cuda_opencv3.1
+FROM amarburg/lsdslam-dev-host:nvidia_cuda_opencv3.2
 
 RUN sudo apt-get install --yes curl lsb-release less cpuid
 
