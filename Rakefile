@@ -28,6 +28,8 @@ namespace :docker do
 
     paths.each_pair { |dir,tag|
       task tag do
+        tag = "%s:%s" % [IMAGE_NAME, tag]
+
         sh "docker build -t #{tag} #{dir}"
       end
     }
