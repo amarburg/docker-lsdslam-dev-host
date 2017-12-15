@@ -4,12 +4,12 @@ box: ubuntu:16.04
 build:
   steps:
     - install-packages:
-         packages: cmake rake libopencv-dev libboost-all-dev libeigen3-dev libtclap-dev libgomp1 libsuitesparse-dev git libglew-dev libglm-dev autoconf libtool freeglut3-dev libxmu-dev libxi-dev
+         packages: cmake libopencv-dev libboost-all-dev libeigen3-dev libtclap-dev libgomp1 libsuitesparse-dev git libglew-dev libglm-dev autoconf libtool freeglut3-dev libxmu-dev libxi-dev
 
 
-    # Push completed builds to Docker hub
-    - internal/docker-push:
-        username: $USERNAME
-        password: $PASSWORD
-        repository: amarburg/lsdslam-dev-host
-        registry: https://registry.hub.docker.com
+    # # Push completed builds to Docker hub
+    # - internal/docker-push:
+    #     username: $USERNAME
+    #     password: $PASSWORD
+    #     repository: amarburg/lsdslam-dev-host
+    #     registry: https://registry.hub.docker.com

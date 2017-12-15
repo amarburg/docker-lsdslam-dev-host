@@ -1,0 +1,4 @@
+.wercker/
+
+# Ignore any coverity packages
+*.tar.gz

@@ -1,0 +1,5 @@
+# Ignore any coverity binaries
+*.tar.gz
+
+# Ignore wercker cache
+.wercker/
