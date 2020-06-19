@@ -1,0 +1,8 @@
+FROM amarburg/lsdslam-dev-host:latest
+
+ARG sdk_file="Blackmagic DeckLink SDK 11.5.1"
+COPY --chown=lsdslam:lsdslam ${sdk_file} $HOME/${sdk_file}
+
+RUN echo $HOME/${sdk_file}/
+RUN ln -s "$HOME/${sdk_file}/" $HOME/Blackmagic_DeckLink_SDK
+ENV BLACKMAGIC_DIR=$HOME/Blackmagic_DeckLink_SDK
