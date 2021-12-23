@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV BUILDDEPS="g++ cmake libopencv-dev libboost-all-dev \
             libeigen3-dev libtclap-dev libgomp1 \
